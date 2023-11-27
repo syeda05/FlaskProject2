@@ -373,3 +373,26 @@ caption{
         h3{font-size: 15px;}
     
         }
+        #company-info{
+            width: 50%;
+            border: 2px solid black;
+            border-collapse: collapse;
+            margin: auto;
+        }
+    
+        #company-info th{
+            background-color: #99003d;
+            color: wheat;
+        }
+    
+        #company-info td{
+            padding: 10px; 
+            text-decoration: none;
+            background-color: bisque;
+        }
+    
+        #company-info #map{
+            padding: 0px;
+            border: 2px solid black;
+        }
+    
