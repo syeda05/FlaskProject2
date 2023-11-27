@@ -55,3 +55,5 @@ def deleteRecipe():
     recipe_id = request.args.get("id")
     db.collection("recipes").document(recipe_id).delete()
     return render_template("delete-confirmation.html",logo=logo)
+
+
