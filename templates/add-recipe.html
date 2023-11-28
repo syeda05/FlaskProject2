@@ -1,0 +1,96 @@
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+
+    <title>Home</title>
+    <style>
+  .header0 {
+        background-color: #84735E;
+        color: #100d0d;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .body0 {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #DBD0BD; 
+        background-image: url('../static/images/marb2.jpeg'); 
+        background-size: cover;
+        background-attachment: fixed;
+        font-style:italic;
+        font-weight: 800;
+        margin: auto;
+    }
+    .welcome0 {
+        margin: 0;
+    }
+    
+    .logo0 {
+        margin-left: 40px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #84735E;
+    }
+    </style>
+</head>
+
+<body class="body0">
+    <header class="header0">
+        <h1 class='welcome0'>Recipe Management System</h1>
+        <img class='logo0' src="../static/images/logo.jpg" width="80" height="80" style="margin-left: 40px">
+    </header>
+    
+  
+    <form method="post" enctype="multipart/form-data">
+ 
+            <div class="form">
+                    <fieldset class="cfield">
+                        <legend>Add Recipe</legend>
+                        <div class="form">
+                        <label for="fname">*Name</label>
+                        <input id="fname" type="text" name="fname" required>
+            
+                        <label for="finstructions">*Instructions</label>
+                        <textarea required class="finstructions" id="finstructions" name="finstructions" placeholder="each instruction should be separated by a comma"></textarea>
+                        
+                        <label for="fingredients">*Ingredients</label>
+                        <textarea required class="fingredients" id="fingredients" name="fingredients" placeholder="each ingredient should be separated by a comma"></textarea>
+            
+                        <label for="frating">*Rating</label>
+                        <input id="frating" type="number" name="frating" required>
+            
+                        <label for="fcategory">*Category</label>
+                            <select id="fcategory" name="fcategory">
+                                <option value="Breakfast">Breakfast</option>
+                                <option value="Lunch">Lunch</option>
+                                <option value="Dinner">Dinner</option>
+                            </select>
+            
+            
+                       
+            
+                        </div>
+                    </fieldset>
+                        <label class=""imgsel>Image:</label>
+                        <input class="imgsl2" formaction="/add-recipe" formmethod="post" type="hidden">
+                        {{form.hidden_tag()}}{{form.file()}}{{form.submit()}}
+                        </input>
+                      
+        </fieldset>
+
+
+    </form>
+
+    <br><br>
+    <h5><a href="/">Return to Home page</a></h5>
+</body>
+</html>
