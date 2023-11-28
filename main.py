@@ -57,3 +57,32 @@ def deleteRecipe():
     return render_template("delete-confirmation.html",logo=logo)
 
 
+@app.route("/addRecipe",methods=['GET','POST'])
+def addRecipe():                                   #complete
+    logo = os.path.join(app.config['UPLOAD_FOLDER'], 'logo.jpg')
+    recipe_name=""
+    form = UploadFileForm()
+
+    if request.method=="GET":
+        return render_template('add-recipe.html',logo=logo,form=form)
+    
+    #getting last id 
+    if request.method == "POST":
+        recipes_list = getAllRecipes()
+        new_id = len(recipes_list)+80
+
+        recipe_id = str(new_id)
+        recipe_name = request.form.get("fname")
+        recipe_ingredients = request.form.get("fingredients").split(',')
+        recipe_instructions = request.form.get("finstructions")
+        recipe_rating = request.form.get("frating")
+        recipe_category = request.form.get("fcategory")
+        
+        if form.validate_on_submit():
+            file = form.file.data #grab the file
+            recipe_image = file.filename # =>'donut.png'
+            file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
+            recipe_dic = {"image":recipe_image,"id":recipe_id,"name":recipe_name,"ingredient":recipe_ingredients,"instruction":recipe_instructions,"rating":recipe_rating,"category":recipe_category}
+            db.collection("recipes").document(recipe_id).set(recipe_dic)
+        return render_template("add-confirmation.html",logo=logo,r_name=recipe_name)
+
