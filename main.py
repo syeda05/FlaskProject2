@@ -86,3 +86,35 @@ def addRecipe():                                   #complete
             db.collection("recipes").document(recipe_id).set(recipe_dic)
         return render_template("add-confirmation.html",logo=logo,r_name=recipe_name)
 
+@app.route("/editRecipe",methods=['GET','POST']) #complete
+def editRecipe():
+
+    #using os to get path of logo image
+    logo = os.path.join(app.config['UPLOAD_FOLDER'], 'logo.jpg')
+
+    if request.method=='GET': 
+        
+        recipe_id = request.args.get("id") 
+        doc_ref = db.collection("recipes").document(recipe_id)
+        doc = doc_ref.get()
+        doc = doc.to_dict()
+        ingredients = str(doc["ingredient"])
+        ingredients = ingredients.strip("'")
+        ingredients = ingredients[1:(len(ingredients)-1)] #=>'dough','chocolate'
+        ingredients = ingredients.replace("'","") 
+
+        return render_template("edit-recipe.html",logo=logo,recipe=doc,ingredients=ingredients)
+    
+
+    if request.method == 'POST':
+        recipe_id = request.form.get("fid")
+        recipe_name = request.form.get("fname")
+        recipe_ingredients = request.form.get("fingredients").split(",")
+        recipe_instructions = request.form.get("finstructions")
+        recipe_rating = request.form.get("frating")
+        recipe_category = request.form.get("fcategory")
+        
+        new_recipe = {"id":recipe_id,"name":recipe_name,"ingredient":recipe_ingredients,"instruction":recipe_instructions,"rating":recipe_rating,"category":recipe_category}
+        print(type(new_recipe))
+        db.collection("recipes").document(recipe_id).update(new_recipe)
+        return render_template('edit-confirmation.html',logo=logo,r_name=recipe_name)
