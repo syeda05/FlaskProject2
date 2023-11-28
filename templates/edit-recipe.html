@@ -1,0 +1,93 @@
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+
+   
+  </head>
+  
+<style>
+  .body2{
+    background-image: url('../static/images/mar.jpg');
+    background-size: 11234px 1313px;
+    background-repeat: no-repeat;
+    font-family: 'Arial', sans-serif;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    height: 200vh;
+  }
+  .header0 {
+        background-color: #84735E;
+        color: #100d0d;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .welcome0 {
+        margin: 0;
+    }
+    
+    .logo0 {
+        margin-left: 40px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #84735E;
+    }
+    
+</style>
+
+
+        <header class="header0">
+          <h1 class='welcome0'>Recipe Management System!</h1>
+          <img class='logo0' src="../static/images/logo.jpg" width="80" height="80" style="margin-left: 40px">
+        </header>
+        <main class="body2">
+
+          <h2 class="edittitle">Edit {{recipe.name}} Recipe</h2>
+            <br><br>
+          <form action="/editRecipe" method="post">
+              <fieldset>
+                <legend>Edit recipe</legend>
+                
+                <div class="form">
+                    <label for="fid">ID</label>
+                    <input id="fid" readonly name="fid" value="{{recipe.id}}">
+                    
+                    <label for="fname">Dish name</label>
+                    <input id="fname" type="text" name="fname" value="{{recipe.name}}">
+
+                    <label for="fingredients">Ingredients</label>
+                    <textarea required class="fingredients" id="fingredients" name="fingredients">{{ingredients}}</textarea>
+
+                    <label for="finstructions">Instructions</label>
+                    <textarea required class="finstructions" id="finstructions" name="finstructions">{{recipe.instruction}}</textarea>
+
+                    <label for="frating">Rating</label>
+                    <input id="frating" type="text" name="frating" value="{{recipe.rating}}">
+
+
+                    <label for="fcategory">Category</label>
+                    <select id="fcategory" name="fcategory">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                    </select>
+                </div>
+              <br>
+              <br>
+            </fieldset>
+                      <input class="btnPrimary" type="submit" value="Modify" onclick="return validate()">
+            
+          </form>
+      
+          <a href="/" class="returnLink">Return to Home Page</a>
+      
+        </main>
+</html>  
+  
+  
+  
+  
+  
