@@ -1,0 +1,81 @@
+
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+  
+<style>
+    .body3{
+    background-image: url('../static/images/back2.jpg');
+    background-size: 1234px 1000px;
+    background-repeat: no-repeat;
+    font-family: 'Arial', sans-serif;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    height: 200vh;
+  }
+  .header0 {
+        background-color: #84735E;
+        color: #100d0d;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .welcome0 {
+        margin: 0;
+    }
+    
+    .logo0 {
+        margin-left: 40px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #84735E;
+    }
+</style>
+</head>
+
+  <body class="body3">
+
+    <div class="header0">
+      <h1 class="welcome0">Recipe Management System!</h1>
+      <!-- <img class="logo0" src="{{ logo }}" width="50" height="50" style="margin-left: 20px" alt="Logo"> -->
+      <img class='logo0' src="../static/images/logo.jpg" width="80" height="80" style="margin-left: 40px">
+
+    </div>
+
+    <br>
+    <br>
+    
+    <main>
+      <h2 class="recipe-list-title">List of "{{category}}" Recipes</h2>
+  <br>
+      {% if recipe_list == [] %}
+        <h2>No recipes found</h2>
+      {% else %}
+        {% for recipe in recipe_list %}
+          <div class="recipe-item">
+            <h4>
+              <a class="recipe-link" href="/recipe-details?recipe_id={{recipe.id}}">
+                {{recipe.id}}. {{recipe.name}}
+              </a><br>
+            </h4>
+          </div>
+        {% endfor %}
+      {% endif %}
+  <br>
+  <br>
+  <br>
+      <h5><a class="return-link" href="/">Return to Home Page</a></h5>
+    </main>
+  
+  </body>
+  
+  
+  
+  
+  
+  
+  
+  
