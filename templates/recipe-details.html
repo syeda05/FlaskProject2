@@ -1,0 +1,64 @@
+    
+
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+  </header>
+  
+  <body>
+  
+      <header>
+          <h1 id='welcome2'>Recipe Management System!</h1> <img id='logo' img src="{{ logo }}" width="200" height="200" style="margin-left: 40px">
+      </header>
+            
+  <main>
+    <h1>Recipe Details</h1>
+    <table class="tab1">
+      <tr> 
+        <th id="pic">image</th>
+        <th id="dish">Dish</th>
+        <th id="ingredients">ingredients</th>
+        <th id="instructions">instructions</th>
+        <th id="categoryy">Category</th>  
+        <th id="rating">Rating</th> 
+        <th id="options">Options</th>
+    
+      </tr>
+      
+        <tr>
+          <td class="td1">
+            <div class="product">
+              <img src="{{image}}">
+            </div>
+          </td>
+
+      
+          <td >{{recipe.name}}</td>
+          <td class="desc1">
+            {{ingredients}}
+          </td>
+          <td >{{recipe.instruction}}</td>
+          <td>{{recipe.category}}</td>
+          <td>{{recipe.rating}}</td>
+          <td><a href="/deleteRecipe?id={{recipe.id}}"><input type="button" value="Delete"></a><br>
+              <a href="/editRecipe?id={{recipe.id}}"><input type="button" value="Edit"></a></td>
+
+
+        </tr>
+    
+    </table>
+
+    <br><br>
+          <h5><a  class="returnn" href="/">Return to Home page</a></h5>
+
+  </main>
+  
+  
+  </body>
+  
+  
+  
+  
+  
+  
+  
