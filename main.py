@@ -133,3 +133,17 @@ def keyword():
             result.append(recipe)
     
     return render_template("keyword-search.html",keyword=keyword,logo=logo,recipe_list=result)
+
+#filter by category:
+@app.route("/category")
+def category():
+    recipes_list=getAllRecipes()
+     #using os to get path of logo image
+    logo = os.path.join(app.config['UPLOAD_FOLDER'], 'logo.jpg')
+    result = []
+    category=request.args.get("selection")
+    for recipe in recipes_list:
+        if(category == recipe['category']):
+            result.append(recipe)
+
+    return render_template("category-search.html",category=category,logo=logo,recipe_list=result)
