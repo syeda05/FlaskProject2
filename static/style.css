@@ -684,4 +684,38 @@ caption{
                 .del{
                   color: #99003d;
                 }
+
+                .returnn:hover {
+                    color: #333;
+                  }
+                  .recipe-link{
+                    color: #333;
+            
+                  }
+                  .options-btns {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-top: 10px;
+                  }
               
+                  .options-btns a {
+                    margin-bottom: 10px;
+                  }
+              
+                  .options-btns input {
+                    cursor: pointer;
+                    background-color: #007bff;
+                    color: #fff;
+                    border: none;
+                    padding: 8px 12px;
+                    border-radius: 5px;
+                    font-size: 1em;
+                    transition: background-color 0.3s;
+                  }
+              
+                  .options-btns input:hover {
+                    background-color: #0056b3;
+                  }
+            
+                  
