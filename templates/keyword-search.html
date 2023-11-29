@@ -1,0 +1,44 @@
+
+
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+</header>
+  
+  
+  <body>
+  
+      <header>
+          <h1 id='welcome'>Recipe Management System!</h1> <img id='logo' img src="{{ logo }}" width="200" height="200" style="margin-left: 40px">
+      </header>
+  
+        <main>
+          {% if keyword == "": %}
+            <h2>nothing has been entered in search by keyword field</h2><br><br>
+
+          {% elif recipe_list == [] %}
+            <h2>No recipes found</h2>
+            
+          {% else %}
+            <h2>list of recipes including "{{keyword}}"</h2>
+
+            {% for recipe in recipe_list %}
+                <h4>
+                <a href="/recipe-details?recipe_id={{recipe.id}}">{{recipe.name}} </a>
+                </h4> <br>
+            {% endfor %}
+
+          {% endif %}
+
+          <h5><a href="/">Return to Home page</a></h5>
+        </main>
+  
+  
+  </body>
+  
+  
+  
+  
+  
+  
+  
