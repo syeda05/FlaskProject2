@@ -118,3 +118,18 @@ def editRecipe():
         print(type(new_recipe))
         db.collection("recipes").document(recipe_id).update(new_recipe)
         return render_template('edit-confirmation.html',logo=logo,r_name=recipe_name)
+
+        #searching by keyword:
+@app.route("/keyword" )    #complete
+def keyword():
+    recipes_list = getAllRecipes()
+    print(getAllRecipes())
+    #using os to get path of logo image
+    logo = os.path.join(app.config['UPLOAD_FOLDER'], 'logo.jpg')
+    result = []
+    keyword = request.args.get("keyword")
+    for recipe in recipes_list:
+        if(keyword.upper() in recipe['name'].upper()):
+            result.append(recipe)
+    
+    return render_template("keyword-search.html",keyword=keyword,logo=logo,recipe_list=result)
