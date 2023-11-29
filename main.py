@@ -147,3 +147,24 @@ def category():
             result.append(recipe)
 
     return render_template("category-search.html",category=category,logo=logo,recipe_list=result)
+
+#details for a specific recipe
+@app.route("/recipe-details")
+def recipe_details():
+    recipes_list=getAllRecipes()
+    #using os to get path of logo image
+    logo = os.path.join(app.config['UPLOAD_FOLDER'], 'logo.jpg')
+
+    recipe_id = request.args.get("recipe_id")
+    for recipe in recipes_list:
+        if(recipe_id == str(recipe['id'])):
+            img= str(recipe['image'])
+            image = os.path.join(app.config['UPLOAD_FOLDER'], img)
+            ingredients = str(recipe['ingredient'])
+            ingredients = ingredients.strip("'")
+            ingredients = ingredients[1:(len(ingredients)-1)] #=>'dough','chocolate' (remove start and end brackets)
+            ingredients = ingredients.replace("'","") 
+            return render_template("recipe-details.html",logo=logo,image=image,recipe=recipe,ingredients=ingredients)
+
+if __name__ == '__main__':
+    app.run(debug=True)
